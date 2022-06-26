@@ -1,67 +1,60 @@
-
-}
 public class AreaDeLaFigura {
 
-    /** The array of figures */
+    /** El array de figuras */
     private Figura figuras[] = null;
-  
-    /** Constructor of the class with a fixed number of figures. */
-    public AreaDeLaFigura(int numFiguras) {
-      figuras = new Figura[numFiguras];
+
+    public AreaDeLaFigura(int numeroDeFiguras) {
+      figuras = new Figura[numeroDeFiguras];
+    }
+
+    public AreaDeLaFigura() {
+    }
+/**
+    public AreaDeLaFigura(int numFiguras, String nombre, Figura[][] figuras) {
+      figuras = new Figura[nombre][numFiguras];
     }
   
-    /** Calculates the total area of the array figures. */
+    /** Calcula el área total de las figuras de la matriz. */
     public double areaTotal() {
       double areaTotal = 0;
       for (int i = 0; i < figuras.length; i++) {
-        System.out.println(" Summing area of figure " + i + ":"
-            + figuras[i].area());
+          System.out.println(" Area de la figura "+ figuras[i].area());
         areaTotal += figuras[i].area();
       }
       return areaTotal;
     }
   
-    /** Adds a new figure in the first empty position of the figures array. */
-    public void addFigure(Figura f) {
-      for (int i = 0; i < figuras.length; i++) {
-        if (figuras[i] == null) {
-          figuras[i] = f;
-          break;
+    /** Agrega una nueva figura en la primera posición vacía de la matriz de figuras. */
+    public void addFigura(Figura f) {
+      if(figuras != null){
+        for (int i = 0; i < figuras.length; i++) {
+          if (figuras[i] == null) {
+            figuras[i] = f;
+            break;
+          }
         }
+      }else{
+        int i =0;
+        figuras[i] = f;
       }
-    }
-  
-    /** Prints a list with the array figures. */
-    public void print() {
-      for (int i = 0; i < figures.length; i++) { 
-      /* 
-       * The call to the toString method works because 
-       * this method is defined in the Object class 
-       * (which all Java classes extend).
-       * In general, we need to declare the method in the parent class
-       * in order to be able to call it applying polymorphism.
-       */
-      System.out.println(figures[i].toString());
-      }
-      System.out.println("Total area: "+totalArea());
-    }
-  
-    /** Main Program */
-    public static void main(String args[]) throws Exception {
-      FiguresArea figuresArea = new FiguresArea(2);
-  
-      Point p1 = new Point(1, 1);
-      Point p2 = new Point(3, 1);
-      Point p3 = new Point(2, 3);
-      Triangle t = new Triangle("Triangle1", p1, p2, p3);
-  
-      Point p4 = new Point(1, 3);
-      Point p5 = new Point(3, 1);
-      Square s = new Square("Square1", p4, p5);
-  
-      figuresArea.addFigure(t);
-      figuresArea.addFigure(s);
+
+
       
-      figuresArea.print();
     }
+  
+    /** Imprime una lista con las cifras de la matriz. */
+    public void print() {
+      for (int i = 0; i < figuras.length; i++) { 
+      /* 
+       * La llamada al método toString funciona porque
+       * este método está definido en la clase Object
+       * (que se extienden todas las clases de Java).
+       * En general, necesitamos declarar el método en la clase padre
+       * para poder llamarlo aplicando polimorfismo.
+       */
+      System.out.println(figuras[i].toString());
+      }
+      System.out.println("Total area: "+ areaTotal());
+    }
+  
   }

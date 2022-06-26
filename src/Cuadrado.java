@@ -1,25 +1,31 @@
 import ejercicio_20_06_2022.src.Point;
 
 public class Cuadrado extends Figura {
-
-    /** Square vertexes */
+    /**
+   *
+   */
+  
     private Point v1;
     private Point v2;
     private Point v3;
     private Point v4;
   
-    /** Constructor with name and vertexes */
-    public Cuadrado(String nombre, Point diagonalVertex1, Point diagonalVertex3) {
+    public Cuadrado(String nombre) {
       super(nombre);
-      this.v1 = diagonalVertex1;
-      this.v3 = diagonalVertex3;
-      otherDiagonal(diagonalVertex1, diagonalVertex3);
+    }
+
+    /** Constructor con su nombre y sus vertices */
+    public Cuadrado(String nombre, Point diagonalV1, Point diagonalV3) {
+      super(nombre);
+      this.v1 = diagonalV1;
+      this.v3 = diagonalV3;
+      otraDiagonal(diagonalV1, diagonalV3);
     }
   
     /** Private method to calculate the vertexes for the other diagonal */
-    private void otherDiagonal(Point vertex1, Point vertex3) {
-      v2 = new Point(vertex3.getX(), vertex1.getY());
-      v4 = new Point(vertex1.getX(), vertex3.getY());
+    private void otraDiagonal(Point v1, Point v3) {
+      v2 = new Point(v3.getX(), v1.getY());
+      v4 = new Point(v1.getX(), v3.getY());
     }
   
     public double area() {
@@ -41,8 +47,9 @@ public class Cuadrado extends Figura {
   
     /** Returns a representative string of the square. */
     public String toString() {
+      nombre = "Cuadrado 1";
       String s = "CUADRADO";
-      s += " [NOMBRE=" + nombre + "]";
+      s += " [NOMBRE = " + nombre + "]";
       s += " : " + "VERTICES " + v1.toString() + "," + v2.toString()
           + "," + v3.toString() + "," + v4.toString();
       return s;
@@ -51,7 +58,7 @@ public class Cuadrado extends Figura {
     public static void main(String[] args) {
       Point p1 = new Point(1, 3);
       Point p2 = new Point(3, 1);
-      Cuadrado s = new Cuadrado("Cuadrado", p1, p2);
+      Cuadrado s = new Cuadrado("cuadrado ", p1, p2);
       System.out.println(s.toString());
       System.out.println("Area: " + s.area());
     }
@@ -61,5 +68,5 @@ public class Cuadrado extends Figura {
       // TODO Auto-generated method stub
       return 0;
     }
-  
+
   }
